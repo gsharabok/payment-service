@@ -1,0 +1,25 @@
+# deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment-service
+  labels:
+    app: payment-service
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: payment-service
+  template:
+    metadata:
+      labels:
+        app: payment-service
+    spec:
+      containers:
+      - name: payment-service
+        image: payment-service-image:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: DATABASE_URL  # Add any environment variables your app needs
+          value: "postgresql+asyncpg://postgres:admin123@localhost:5433/Demo"
