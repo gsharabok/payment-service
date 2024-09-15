@@ -29,3 +29,12 @@ Dockerfile, Deployment и Service.
 - Гарантия, что баланс пользователя не может быть отрицательным:
 Нужнр логику в обработке транзакций, чтобы убедиться, что вывод средств не приведет к отрицательному балансу. (небольшая смена логики сохранения транзакции)
 Если вывод средств приведет к отрицательному балансу, вернуть ошибку, указывающую на недостаток средств.# payment-service
+
+Quick start:
+Create a .env file with DATABASE_URL variable
+poetry install
+poetry shell
+python3 -m src.app
+
+Running tests:
+python3 -m unittest tests/src/app/test_application.py
